@@ -397,4 +397,9 @@ Public Class frmOperador
 
         Timer1.Enabled = True
     End Sub
+
+    Private Sub btnAnalisis_Click(sender As Object, e As EventArgs) Handles btnAnalisis.Click
+        frmAnalisis.pFecha = dtFecha.Value.ToShortDateString
+        frmAnalisis.ShowDialog()
+    End Sub
 End Class

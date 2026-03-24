@@ -29,15 +29,15 @@ Partial Class frmCola
         Me.TimerTurnos = New System.Windows.Forms.Timer(Me.components)
         Me.dtFecha = New System.Windows.Forms.DateTimePicker()
         Me.dtgCola = New System.Windows.Forms.DataGridView()
-        Me.TimerLlamada = New System.Windows.Forms.Timer(Me.components)
-        Me.AxWindowsMediaPlayer1 = New AxWMPLib.AxWindowsMediaPlayer()
-        Me.txtOrdenllamada = New System.Windows.Forms.TextBox()
         Me.col_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.USUARIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_orden = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_ventanilla = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.col_id_estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TimerLlamada = New System.Windows.Forms.Timer(Me.components)
+        Me.AxWindowsMediaPlayer1 = New AxWMPLib.AxWindowsMediaPlayer()
+        Me.txtOrdenllamada = New System.Windows.Forms.TextBox()
         CType(Me.dtgCola, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AxWindowsMediaPlayer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -85,29 +85,6 @@ Partial Class frmCola
         Me.dtgCola.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgCola.Size = New System.Drawing.Size(1457, 218)
         Me.dtgCola.TabIndex = 3
-        '
-        'TimerLlamada
-        '
-        Me.TimerLlamada.Enabled = True
-        Me.TimerLlamada.Interval = 5000
-        '
-        'AxWindowsMediaPlayer1
-        '
-        Me.AxWindowsMediaPlayer1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.AxWindowsMediaPlayer1.Enabled = True
-        Me.AxWindowsMediaPlayer1.Location = New System.Drawing.Point(0, 0)
-        Me.AxWindowsMediaPlayer1.Name = "AxWindowsMediaPlayer1"
-        Me.AxWindowsMediaPlayer1.OcxState = CType(resources.GetObject("AxWindowsMediaPlayer1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxWindowsMediaPlayer1.Size = New System.Drawing.Size(1457, 181)
-        Me.AxWindowsMediaPlayer1.TabIndex = 4
-        '
-        'txtOrdenllamada
-        '
-        Me.txtOrdenllamada.Location = New System.Drawing.Point(1304, 362)
-        Me.txtOrdenllamada.Name = "txtOrdenllamada"
-        Me.txtOrdenllamada.Size = New System.Drawing.Size(100, 20)
-        Me.txtOrdenllamada.TabIndex = 5
-        Me.txtOrdenllamada.Text = "0"
         '
         'col_id
         '
@@ -162,6 +139,29 @@ Partial Class frmCola
         Me.col_id_estado.ReadOnly = True
         Me.col_id_estado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.col_id_estado.Visible = False
+        '
+        'TimerLlamada
+        '
+        Me.TimerLlamada.Enabled = True
+        Me.TimerLlamada.Interval = 5000
+        '
+        'AxWindowsMediaPlayer1
+        '
+        Me.AxWindowsMediaPlayer1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.AxWindowsMediaPlayer1.Enabled = True
+        Me.AxWindowsMediaPlayer1.Location = New System.Drawing.Point(0, 0)
+        Me.AxWindowsMediaPlayer1.Name = "AxWindowsMediaPlayer1"
+        Me.AxWindowsMediaPlayer1.OcxState = CType(resources.GetObject("AxWindowsMediaPlayer1.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxWindowsMediaPlayer1.Size = New System.Drawing.Size(1457, 181)
+        Me.AxWindowsMediaPlayer1.TabIndex = 4
+        '
+        'txtOrdenllamada
+        '
+        Me.txtOrdenllamada.Location = New System.Drawing.Point(1304, 362)
+        Me.txtOrdenllamada.Name = "txtOrdenllamada"
+        Me.txtOrdenllamada.Size = New System.Drawing.Size(100, 20)
+        Me.txtOrdenllamada.TabIndex = 5
+        Me.txtOrdenllamada.Text = "0"
         '
         'frmCola
         '

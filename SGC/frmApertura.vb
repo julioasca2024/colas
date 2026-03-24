@@ -134,7 +134,6 @@ Public Class frmApertura
         End If
 
     End Sub
-
     Private Sub btnCambiaEstado_Click(sender As Object, e As EventArgs) Handles btnCambiaEstado.Click
         Dim vaEstado As String
         Dim vaId As Integer
@@ -146,7 +145,7 @@ Public Class frmApertura
         vaEstado = cboEstado.SelectedValue.ToString
         vaId = dtgVentanillas.CurrentRow.Cells("col_id").Value.ToString
         vaEquipo = txtNombreEquipo.Text
-        vaFecha = dtFecha.Value
+        vaFecha = dtFecha.Value.ToShortDateString
 
         'valida si un equipo esta conectado en otra ventanilla
         dt = ConCola.fObtieneDataTable("usp_sgc_ValidaVentanilla", vaId, vaEquipo)
@@ -160,8 +159,8 @@ Public Class frmApertura
 
         If resul > 0 Then
             If vaEstado = "AP" Then  'cuando pasa a estado "Aperturada"
-                MsgBox("SE CAMBIO DE ESTADO '" & cboEstado.Text &
-                        "' Y YA PUEDE COMENZAR A ATENDER", vbInformation)
+                MsgBox("¡SE CAMBIO DE ESTADO '" & cboEstado.Text &
+                        "' Y YA PUEDE COMENZAR A ATENDER!", vbInformation)
 
                 frmOperador.dtFecha.Value = dtFecha.Value
                 frmOperador.txtNombreEquipo.Text = txtNombreEquipo.Text
@@ -172,8 +171,7 @@ Public Class frmApertura
                 frmOperador.ShowDialog()
 
             Else
-                MsgBox("SE CAMBIO DE ESTADO " & cboEstado.SelectedItem.ToString &
-                       " Y YA PUEDE COMENZAR A ATENDER", vbInformation)
+                MsgBox("¡SE CAMBIO DE ESTADO " & cboEstado.Text & "!", vbInformation)
             End If
 
         Else
@@ -228,6 +226,8 @@ Public Class frmApertura
         If vaEstado = "AP" And vaEquipo = Dns.GetHostName().ToUpper.ToString.Trim Then
             btnAbrirCola.Enabled = True
             pColores("BOTONES_BACKCOLOR_ACTIVO_OPERADOR", btnAbrirCola)
+            btnCambiaEstado.Enabled = False
+            pColores("BOTONES_BACKCOLOR_INACTIVO_OPERADOR", btnCambiaEstado)
         Else
             btnAbrirCola.Enabled = False
             pColores("BOTONES_BACKCOLOR_INACTIVO_OPERADOR", btnAbrirCola)
@@ -236,6 +236,8 @@ Public Class frmApertura
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+
         Me.Close()
+
     End Sub
 End Class

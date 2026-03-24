@@ -38,6 +38,13 @@ Partial Class frmOperador
         Me.col_ventanilla = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dtFecha = New System.Windows.Forms.DateTimePicker()
         Me.dtgCola = New System.Windows.Forms.DataGridView()
+        Me.col_id_cola = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_cola_asiganada = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_id_ventanilla_asignada = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_id_estado_cola_asignada = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_estado_asignado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_fecha_asignado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col_color = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtNombreEquipo = New System.Windows.Forms.TextBox()
         Me.txtVentanilla = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -49,22 +56,20 @@ Partial Class frmOperador
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnAnalisis = New System.Windows.Forms.Button()
         Me.btnRellamado = New System.Windows.Forms.Button()
         Me.btnAtendido = New System.Windows.Forms.Button()
         Me.btnAtender = New System.Windows.Forms.Button()
         Me.btnNoAtendido = New System.Windows.Forms.Button()
         Me.btnAsignar = New System.Windows.Forms.Button()
         Me.btnRefresca = New System.Windows.Forms.Button()
-        Me.col_id_cola = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_cola_asiganada = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_id_ventanilla_asignada = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_id_estado_cola_asignada = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_estado_asignado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_fecha_asignado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col_color = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.dtgEspera, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtgCola, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dtgEspera
@@ -77,13 +82,13 @@ Partial Class frmOperador
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgEspera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgEspera.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_id, Me.col_cola, Me.col_Solicitud, Me.col_paciente, Me.col_ticket_cola, Me.col_fecha, Me.col_id_estado, Me.COL_ESTADO, Me.col_equipo, Me.col_id_ventanilla, Me.col_ventanilla})
-        Me.dtgEspera.Location = New System.Drawing.Point(12, 144)
+        Me.dtgEspera.Location = New System.Drawing.Point(12, 189)
         Me.dtgEspera.MultiSelect = False
         Me.dtgEspera.Name = "dtgEspera"
         Me.dtgEspera.ReadOnly = True
         Me.dtgEspera.RowHeadersVisible = False
         Me.dtgEspera.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgEspera.Size = New System.Drawing.Size(844, 476)
+        Me.dtgEspera.Size = New System.Drawing.Size(844, 615)
         Me.dtgEspera.TabIndex = 0
         '
         'col_id
@@ -195,13 +200,73 @@ Partial Class frmOperador
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgCola.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgCola.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col_id_cola, Me.col_cola_asiganada, Me.col_id_ventanilla_asignada, Me.col_id_estado_cola_asignada, Me.col_estado_asignado, Me.col_fecha_asignado, Me.col_color})
-        Me.dtgCola.Location = New System.Drawing.Point(969, 144)
+        Me.dtgCola.Location = New System.Drawing.Point(969, 189)
         Me.dtgCola.MultiSelect = False
         Me.dtgCola.Name = "dtgCola"
         Me.dtgCola.ReadOnly = True
         Me.dtgCola.RowHeadersVisible = False
-        Me.dtgCola.Size = New System.Drawing.Size(407, 476)
+        Me.dtgCola.Size = New System.Drawing.Size(407, 615)
         Me.dtgCola.TabIndex = 3
+        '
+        'col_id_cola
+        '
+        Me.col_id_cola.DataPropertyName = "id"
+        Me.col_id_cola.HeaderText = "ID"
+        Me.col_id_cola.Name = "col_id_cola"
+        Me.col_id_cola.ReadOnly = True
+        Me.col_id_cola.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.col_id_cola.Visible = False
+        '
+        'col_cola_asiganada
+        '
+        Me.col_cola_asiganada.DataPropertyName = "COLA"
+        Me.col_cola_asiganada.HeaderText = "COLA"
+        Me.col_cola_asiganada.Name = "col_cola_asiganada"
+        Me.col_cola_asiganada.ReadOnly = True
+        Me.col_cola_asiganada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'col_id_ventanilla_asignada
+        '
+        Me.col_id_ventanilla_asignada.DataPropertyName = "VENTANILLA"
+        Me.col_id_ventanilla_asignada.HeaderText = "VENTANILLA"
+        Me.col_id_ventanilla_asignada.Name = "col_id_ventanilla_asignada"
+        Me.col_id_ventanilla_asignada.ReadOnly = True
+        Me.col_id_ventanilla_asignada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'col_id_estado_cola_asignada
+        '
+        Me.col_id_estado_cola_asignada.DataPropertyName = "ID_ESTADO"
+        Me.col_id_estado_cola_asignada.HeaderText = "ID_ESTADO"
+        Me.col_id_estado_cola_asignada.Name = "col_id_estado_cola_asignada"
+        Me.col_id_estado_cola_asignada.ReadOnly = True
+        Me.col_id_estado_cola_asignada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.col_id_estado_cola_asignada.Visible = False
+        '
+        'col_estado_asignado
+        '
+        Me.col_estado_asignado.DataPropertyName = "ESTADO"
+        Me.col_estado_asignado.HeaderText = "ESTADO"
+        Me.col_estado_asignado.Name = "col_estado_asignado"
+        Me.col_estado_asignado.ReadOnly = True
+        Me.col_estado_asignado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'col_fecha_asignado
+        '
+        Me.col_fecha_asignado.DataPropertyName = "FECHA"
+        Me.col_fecha_asignado.HeaderText = "FECHA"
+        Me.col_fecha_asignado.Name = "col_fecha_asignado"
+        Me.col_fecha_asignado.ReadOnly = True
+        Me.col_fecha_asignado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'col_color
+        '
+        Me.col_color.DataPropertyName = "color"
+        Me.col_color.HeaderText = "COLOR"
+        Me.col_color.Name = "col_color"
+        Me.col_color.ReadOnly = True
+        Me.col_color.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.col_color.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.col_color.Visible = False
         '
         'txtNombreEquipo
         '
@@ -293,6 +358,20 @@ Partial Class frmOperador
         Me.ToolStripMenuItem2.Size = New System.Drawing.Size(123, 22)
         Me.ToolStripMenuItem2.Text = "Restaurar"
         '
+        'btnAnalisis
+        '
+        Me.btnAnalisis.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnAnalisis.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.btnAnalisis.Image = Global.SGC.My.Resources.Resources.ai
+        Me.btnAnalisis.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnAnalisis.Location = New System.Drawing.Point(862, 710)
+        Me.btnAnalisis.Name = "btnAnalisis"
+        Me.btnAnalisis.Size = New System.Drawing.Size(101, 94)
+        Me.btnAnalisis.TabIndex = 16
+        Me.btnAnalisis.Text = "ANALISIS"
+        Me.btnAnalisis.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnAnalisis.UseVisualStyleBackColor = True
+        '
         'btnRellamado
         '
         Me.btnRellamado.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -300,7 +379,7 @@ Partial Class frmOperador
         Me.btnRellamado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRellamado.Image = Global.SGC.My.Resources.Resources.rellamada
         Me.btnRellamado.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnRellamado.Location = New System.Drawing.Point(1382, 450)
+        Me.btnRellamado.Location = New System.Drawing.Point(1382, 495)
         Me.btnRellamado.Name = "btnRellamado"
         Me.btnRellamado.Size = New System.Drawing.Size(110, 94)
         Me.btnRellamado.TabIndex = 15
@@ -314,7 +393,7 @@ Partial Class frmOperador
         Me.btnAtendido.Enabled = False
         Me.btnAtendido.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAtendido.Image = Global.SGC.My.Resources.Resources.call_received
-        Me.btnAtendido.Location = New System.Drawing.Point(1382, 247)
+        Me.btnAtendido.Location = New System.Drawing.Point(1382, 292)
         Me.btnAtendido.Name = "btnAtendido"
         Me.btnAtendido.Size = New System.Drawing.Size(110, 97)
         Me.btnAtendido.TabIndex = 14
@@ -329,7 +408,7 @@ Partial Class frmOperador
         Me.btnAtender.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAtender.ForeColor = System.Drawing.SystemColors.ControlText
         Me.btnAtender.Image = Global.SGC.My.Resources.Resources.phone_2
-        Me.btnAtender.Location = New System.Drawing.Point(1382, 144)
+        Me.btnAtender.Location = New System.Drawing.Point(1382, 189)
         Me.btnAtender.Name = "btnAtender"
         Me.btnAtender.Size = New System.Drawing.Size(110, 97)
         Me.btnAtender.TabIndex = 13
@@ -344,7 +423,7 @@ Partial Class frmOperador
         Me.btnNoAtendido.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNoAtendido.Image = Global.SGC.My.Resources.Resources.call_received_icon
         Me.btnNoAtendido.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnNoAtendido.Location = New System.Drawing.Point(1382, 350)
+        Me.btnNoAtendido.Location = New System.Drawing.Point(1382, 395)
         Me.btnNoAtendido.Name = "btnNoAtendido"
         Me.btnNoAtendido.Size = New System.Drawing.Size(110, 94)
         Me.btnNoAtendido.TabIndex = 12
@@ -358,7 +437,7 @@ Partial Class frmOperador
         Me.btnAsignar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAsignar.Image = Global.SGC.My.Resources.Resources.Next_arrow_64
         Me.btnAsignar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnAsignar.Location = New System.Drawing.Point(862, 247)
+        Me.btnAsignar.Location = New System.Drawing.Point(862, 291)
         Me.btnAsignar.Name = "btnAsignar"
         Me.btnAsignar.Size = New System.Drawing.Size(101, 94)
         Me.btnAsignar.TabIndex = 4
@@ -372,7 +451,7 @@ Partial Class frmOperador
         Me.btnRefresca.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRefresca.Image = Global.SGC.My.Resources.Resources.REFRESH
         Me.btnRefresca.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnRefresca.Location = New System.Drawing.Point(862, 144)
+        Me.btnRefresca.Location = New System.Drawing.Point(862, 189)
         Me.btnRefresca.Name = "btnRefresca"
         Me.btnRefresca.Size = New System.Drawing.Size(101, 97)
         Me.btnRefresca.TabIndex = 1
@@ -380,71 +459,46 @@ Partial Class frmOperador
         Me.btnRefresca.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnRefresca.UseVisualStyleBackColor = True
         '
-        'col_id_cola
+        'PictureBox1
         '
-        Me.col_id_cola.DataPropertyName = "id"
-        Me.col_id_cola.HeaderText = "ID"
-        Me.col_id_cola.Name = "col_id_cola"
-        Me.col_id_cola.ReadOnly = True
-        Me.col_id_cola.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.col_id_cola.Visible = False
+        Me.PictureBox1.ErrorImage = Global.SGC.My.Resources.Resources.logo
+        Me.PictureBox1.Image = Global.SGC.My.Resources.Resources.logo_ezgif_com_optipng
+        Me.PictureBox1.Location = New System.Drawing.Point(829, 2)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(167, 147)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 17
+        Me.PictureBox1.TabStop = False
         '
-        'col_cola_asiganada
+        'Label4
         '
-        Me.col_cola_asiganada.DataPropertyName = "COLA"
-        Me.col_cola_asiganada.HeaderText = "COLA"
-        Me.col_cola_asiganada.Name = "col_cola_asiganada"
-        Me.col_cola_asiganada.ReadOnly = True
-        Me.col_cola_asiganada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!)
+        Me.Label4.Location = New System.Drawing.Point(264, 160)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(309, 26)
+        Me.Label4.TabIndex = 18
+        Me.Label4.Text = "LISTA DE COLA DE ESPERA"
         '
-        'col_id_ventanilla_asignada
+        'Label5
         '
-        Me.col_id_ventanilla_asignada.DataPropertyName = "VENTANILLA"
-        Me.col_id_ventanilla_asignada.HeaderText = "VENTANILLA"
-        Me.col_id_ventanilla_asignada.Name = "col_id_ventanilla_asignada"
-        Me.col_id_ventanilla_asignada.ReadOnly = True
-        Me.col_id_ventanilla_asignada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'col_id_estado_cola_asignada
-        '
-        Me.col_id_estado_cola_asignada.DataPropertyName = "ID_ESTADO"
-        Me.col_id_estado_cola_asignada.HeaderText = "ID_ESTADO"
-        Me.col_id_estado_cola_asignada.Name = "col_id_estado_cola_asignada"
-        Me.col_id_estado_cola_asignada.ReadOnly = True
-        Me.col_id_estado_cola_asignada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.col_id_estado_cola_asignada.Visible = False
-        '
-        'col_estado_asignado
-        '
-        Me.col_estado_asignado.DataPropertyName = "ESTADO"
-        Me.col_estado_asignado.HeaderText = "ESTADO"
-        Me.col_estado_asignado.Name = "col_estado_asignado"
-        Me.col_estado_asignado.ReadOnly = True
-        Me.col_estado_asignado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'col_fecha_asignado
-        '
-        Me.col_fecha_asignado.DataPropertyName = "FECHA"
-        Me.col_fecha_asignado.HeaderText = "FECHA"
-        Me.col_fecha_asignado.Name = "col_fecha_asignado"
-        Me.col_fecha_asignado.ReadOnly = True
-        Me.col_fecha_asignado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'col_color
-        '
-        Me.col_color.DataPropertyName = "color"
-        Me.col_color.HeaderText = "COLOR"
-        Me.col_color.Name = "col_color"
-        Me.col_color.ReadOnly = True
-        Me.col_color.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.col_color.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.col_color.Visible = False
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(983, 161)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(375, 25)
+        Me.Label5.TabIndex = 19
+        Me.Label5.Text = "ATENCION DE LA COLA DE ESPERA"
         '
         'frmOperador
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1504, 632)
+        Me.ClientSize = New System.Drawing.Size(1504, 816)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.btnAnalisis)
         Me.Controls.Add(Me.btnRellamado)
         Me.Controls.Add(Me.btnAtendido)
         Me.Controls.Add(Me.btnAtender)
@@ -466,6 +520,7 @@ Partial Class frmOperador
         CType(Me.dtgEspera, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtgCola, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip1.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -509,4 +564,8 @@ Partial Class frmOperador
     Friend WithEvents col_estado_asignado As DataGridViewTextBoxColumn
     Friend WithEvents col_fecha_asignado As DataGridViewTextBoxColumn
     Friend WithEvents col_color As DataGridViewTextBoxColumn
+    Friend WithEvents btnAnalisis As Button
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
 End Class
