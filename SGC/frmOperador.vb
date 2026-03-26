@@ -405,5 +405,6 @@ Public Class frmOperador
         frm.pEquipo = txtNombreEquipo.Text.Trim
         frm.ShowDialog()
         Timer1.Enabled = False
+
     End Sub
 End Class
