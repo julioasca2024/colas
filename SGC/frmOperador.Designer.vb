@@ -463,9 +463,9 @@ Partial Class frmOperador
         '
         Me.PictureBox1.ErrorImage = Global.SGC.My.Resources.Resources.logo
         Me.PictureBox1.Image = Global.SGC.My.Resources.Resources.logo_ezgif_com_optipng
-        Me.PictureBox1.Location = New System.Drawing.Point(829, 2)
+        Me.PictureBox1.Location = New System.Drawing.Point(1358, -1)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(167, 147)
+        Me.PictureBox1.Size = New System.Drawing.Size(144, 138)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 17
         Me.PictureBox1.TabStop = False
