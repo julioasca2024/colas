@@ -79,7 +79,6 @@ Public Class frmOperador
             Exit Sub
         End If
 
-
         If dtgEspera.Rows.Count > 0 Then
 
             For i As Integer = 0 To dtgEspera.Rows.Count - 1
@@ -104,7 +103,6 @@ Public Class frmOperador
                     Exit For
                 End If
             Next
-
         End If
 
     End Sub
